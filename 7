@@ -1,68 +1,21 @@
-X = [[1], [2], [3], [8], [9], [10]] 
-y = [0, 0, 0, 1, 1, 1] 
-# 1. SUPERVISED LEARNING 
- 
-print("\nSUPERVISED LEARNING") 
- 
-# Simple prediction using labeled data 
-def supervised_predict(value): 
- 
-    if value < 5: 
-        return 0 
-    else: 
-        return 1 
- 
-print("Prediction for 2 :", supervised_predict(2)) 
-print("Prediction for 9 :", supervised_predict(9)) 
- 
-# 2. UNSUPERVISED LEARNING 
- 
-print("\nUNSUPERVISED LEARNING") 
- 
-# Simple clustering without labels 
-for value in X: 
- 
-    if value[0] < 5: 
-        cluster = "Cluster A" 
-    else: 
-        cluster = "Cluster B" 
- 
-    print(value[0], "->", cluster) 
- 
-# 3. SEMI-SUPERVISED LEARNING 
- 
-print("\nSEMI-SUPERVISED LEARNING") 
- 
-# Some data labeled, some unlabeled 
-labeled_data = {1: 0, 9: 1} 
- 
-unlabeled = [2, 3, 8, 10] 
- 
-for value in unlabeled: 
- 
-    if value < 5: 
-        predicted_label = 0 
-    else: 
-        predicted_label = 1 
- 
-    print("Value :", value, 
-          "Predicted Label :", predicted_label) 
- 
- # 4. REINFORCEMENT LEARNING 
+X=[[1],[2],[3],[8],[9],[10]]
 
-print("\nREINFORCEMENT LEARNING") 
- 
-score = 0 
- 
-actions = ["Correct", "Wrong", "Correct"] 
- 
-for action in actions: 
- 
-    if action == "Correct": 
-        score += 10 
-        print("Reward +10") 
-    else: 
-        score -= 5 
-        print("Penalty -5") 
- 
-print("Final Score :", score)
+print("\nSUPERVISED LEARNING")
+f=lambda x:0 if x<5 else 1
+print('prediction for 2 ->',f(2))
+print("prediction for 9 ->",f(9))
+
+print("\nUNSUPERVISED LEARNING")
+for i in X:
+    print(i[0],"-> Cluster","A" if i[0]<5 else "B")
+
+print("\nSEMI-SUPERVISED LEARNING")
+for i in [2,3,8,10]:
+    print('value ',i,"-> predicted label",f(i))
+
+print("\nREINFORCEMENT LEARNING")
+s=0
+for a in ["Correct","Wrong","Correct"]:
+    s+=10 if a=="Correct" else -5; 
+    print("Reward +10" if a=="Correct" else "Penalty -5")
+print("Score =",s)
